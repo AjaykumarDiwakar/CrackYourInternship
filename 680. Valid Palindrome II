@@ -1,0 +1,26 @@
+class Solution {
+    public boolean validPalindrome(String s) {
+      int left=0;
+      int right=s.length()-1;
+      while(left<=right){
+        if(s.charAt(left)==s.charAt(right)){
+            left++;
+            right--;
+        }else{
+            String p=s.substring(left,right);
+            StringBuilder sb = new StringBuilder(p);
+            String q=sb.reverse().toString();
+            
+            String x=s.substring(left+1,right+1);
+            StringBuilder sb1 = new StringBuilder(x);
+            String y=sb1.reverse().toString();
+            if((p.equals(q))||(x.equals(y))){
+                return true;
+            }else{
+                return false;
+            }
+        }
+      }  
+            return true;
+    }
+}
