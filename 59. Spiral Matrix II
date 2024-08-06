@@ -1,0 +1,45 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+     int stC=0;
+    int stR=0;
+    int enR=n-1;
+    int enC=n-1;
+    int count=1;
+    int [][] ans=new int[n][n];
+    while((stC<=enC)&&(stR<=enR)){
+        // top
+        for (int i = stC; i <=enC; i++) {
+            ans[stR][i]=count;
+            count++;
+           
+        }
+        
+        // right
+        for (int i = stR+1; i <=enR; i++) {
+           ans[i][enC]=count;
+            count++; 
+            
+        }
+
+        // bottom
+        for (int i =enC-1; i >=stC; i--) {
+         
+           ans[enR][i]=count;
+            count++;
+           
+        }
+       
+        // left
+        for (int i = enR-1; i >=stR+1 ; i--) {
+      ans[i][stR]=count;
+            count++;
+        }
+       
+        stR++;
+        stC++;
+        enR--;
+        enC--;
+    } 
+    return ans; 
+    }
+}
