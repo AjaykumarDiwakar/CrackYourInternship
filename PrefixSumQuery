@@ -1,0 +1,35 @@
+package dsa.array.prefix;
+
+import java.util.Scanner;
+
+public class PrefixSumQuery {
+
+    public static int rangeSum(int l,int r,int [] arr,int n){
+        for(int i=2;i<=n;i++){
+            arr[i]=arr[i]+arr[i-1];
+        }
+        if(l==1)
+            return arr[r];
+
+        return arr[r]-arr[l-1];
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the size of the array: ");
+        int n=sc.nextInt();
+        int [] arr=new int[n+1];
+        System.out.println("Enter the elements of Array: ");
+        for (int i=1;i<=n;i++){
+            arr[i]=sc.nextInt();
+        }
+
+        System.out.println("Starting index: ");
+        int l=sc.nextInt();
+        System.out.println("Ending index: ");
+        int r=sc.nextInt();
+        int ret=rangeSum(l,r,arr,n);
+        System.out.println(ret);
+
+    }
+}
