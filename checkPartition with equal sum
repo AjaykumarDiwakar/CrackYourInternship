@@ -1,0 +1,39 @@
+package dsa.array.prefix;
+
+import java.util.Scanner;
+
+public class EqualPartition {
+
+    public static boolean checkPartition(int arr[],int sum){
+        for(int i=1;i<arr.length;i++){
+            arr[i]+=arr[i-1];
+            int suffix=sum-arr[i];
+            if(arr[i]==suffix){
+                return true;
+            }
+
+        }
+        return false;
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the size of the array: ");
+        int n=sc.nextInt();
+        int [] arr=new int[n];
+        System.out.println("Enter the elements of Array: ");
+        int sum=0;
+        for (int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+            sum+=arr[i];
+        }
+
+        boolean out=checkPartition(arr,sum);
+        if(out){
+            System.out.println("Yes present....");
+        }else{
+            System.out.println("Not Present.....");
+        }
+    }
+}
